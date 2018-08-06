@@ -11,7 +11,11 @@
 # Generated files
 bin/
 gen/
+*.o
+*.o.d
+app/src/main/obj
 
+app/.externalNativeBuild
 # Gradle files
 .gradle/
 build/
@@ -43,7 +47,10 @@ proguard/
 .LSOverride
 
 # Icon must ends with two \r.
-Icon
+Icon
+
+#Linux make am
+*.am
 
 # Thumbnails
 ._*
@@ -54,6 +61,10 @@ Icon
 
 # Windows
 # =========================
+*.dsp
+*.dsw
+*.sln
+*.vc*proj
 
 # Windows image file caches
 Thumbs.db

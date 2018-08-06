@@ -12,7 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-# $Id: Android.mk 216 2015-05-18 15:28:41Z oparviai $
 
 LOCAL_PATH := $(call my-dir)
 
@@ -30,19 +29,20 @@ LOCAL_SRC_FILES := soundtouch-jni.cpp ../../SoundTouch/AAFilter.cpp  ../../Sound
                 ../../SoundTouch/BPMDetect.cpp ../../SoundTouch/PeakFinder.cpp 
 
 # for native audio
-LOCAL_SHARED_LIBRARIES += -lgcc 
+#LOCAL_SHARED_LIBRARIES += -lgcc
 # --whole-archive -lgcc 
 # for logging
 LOCAL_LDLIBS    += -llog
+# -lgcc
 # for native asset manager
 #LOCAL_LDLIBS    += -landroid
 
 # Custom Flags: 
 # -fvisibility=hidden : don't export all symbols
-LOCAL_CFLAGS += -fvisibility=hidden -fdata-sections -ffunction-sections
-LOCAL_C_INCLUDES += $(LOCAL_PATH)../../include
+FLAGS := -I$(LOCAL_PATH)/../../include/ -I$(LOCAL_PATH)/../../SoundTouch/  -fdata-sections -ffunction-sections -fvisibility=hidden -std=c++14
+LOCAL_CFLAGS += $(FLAGS)
+LOCAL_CPPFLAGS += $(FLAGS)
 
-#LOCAL_C_INCLUDES += O:/Android-lib/app/src/main/jni/include
 # OpenMP mode : enable these flags to enable using OpenMP for parallel computation 
 #LOCAL_CFLAGS += -fopenmp
 #LOCAL_LDFLAGS += -fopenmp

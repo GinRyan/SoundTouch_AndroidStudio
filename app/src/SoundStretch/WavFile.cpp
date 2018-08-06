@@ -17,13 +17,6 @@
 ///
 ////////////////////////////////////////////////////////////////////////////////
 //
-// Last changed  : $Date: 2014-10-05 19:20:24 +0300 (Sun, 05 Oct 2014) $
-// File revision : $Revision: 4 $
-//
-// $Id: WavFile.cpp 200 2014-10-05 16:20:24Z oparviai $
-//
-////////////////////////////////////////////////////////////////////////////////
-//
 // License :
 //
 //  SoundTouch audio processing library
@@ -222,8 +215,17 @@ void WavInFile::init()
     if (hdrsOk != 0) 
     {
         // Something didn't match in the wav file headers 
-        string msg = "Input file is corrupt or not a WAV file";
-        ST_THROW_RT_ERROR(msg.c_str());
+        ST_THROW_RT_ERROR("Input file is corrupt or not a WAV file");
+    }
+
+    // sanity check for format parameters
+    if ((header.format.channel_number < 1)  || (header.format.channel_number > 9) ||
+        (header.format.sample_rate < 4000)  || (header.format.sample_rate > 192000) ||
+        (header.format.byte_per_sample < 1) || (header.format.byte_per_sample > 320) ||
+        (header.format.bits_per_sample < 8) || (header.format.bits_per_sample > 32))
+    {
+        // Something didn't match in the wav file headers 
+        ST_THROW_RT_ERROR("Error: Illegal wav file header format parameters.");
     }
 
     /* Ignore 'fixed' field value as 32bit signed linear data can have other value than 1.
@@ -544,12 +546,12 @@ int WavInFile::readHeaderBlock()
         if (fread(&(header.format.fixed), nLen, 1, fptr) != 1) return -1;
 
         // swap byte order if necessary
-        _swap16(header.format.fixed);            // short int fixed;
-        _swap16(header.format.channel_number);   // short int channel_number;
-        _swap32((int &)header.format.sample_rate);      // int sample_rate;
-        _swap32((int &)header.format.byte_rate);        // int byte_rate;
-        _swap16(header.format.byte_per_sample);  // short int byte_per_sample;
-        _swap16(header.format.bits_per_sample);  // short int bits_per_sample;
+        _swap16((short &)header.format.fixed);            // short int fixed;
+        _swap16((short &)header.format.channel_number);   // short int channel_number;
+        _swap32((int &)header.format.sample_rate);        // int sample_rate;
+        _swap32((int &)header.format.byte_rate);          // int byte_rate;
+        _swap16((short &)header.format.byte_per_sample);  // short int byte_per_sample;
+        _swap16((short &)header.format.bits_per_sample);  // short int bits_per_sample;
 
         // if format_len is larger than expected, skip the extra data
         if (nDump > 0)

@@ -7,10 +7,6 @@
 /// WWW           : http://www.surina.net
 ///
 ////////////////////////////////////////////////////////////////////////////////
-//
-// $Id: soundtouch-jni.cpp 212 2015-05-15 10:22:36Z oparviai $
-//
-////////////////////////////////////////////////////////////////////////////////
 
 #include <jni.h>
 #include <android/log.h>
@@ -19,7 +15,7 @@
 
 using namespace std;
 
-#include "SoundTouch.h"
+#include "../../include/SoundTouch.h"
 #include "../../SoundStretch/WavFile.h"
 
 #define LOGV(...)   __android_log_print((int)ANDROID_LOG_INFO, "SOUNDTOUCH", __VA_ARGS__)

@@ -8,13 +8,6 @@
 ///
 ////////////////////////////////////////////////////////////////////////////////
 //
-// Last changed  : $Date: 2015-05-18 20:32:21 +0300 (Mon, 18 May 2015) $
-// File revision : $Revision: 4 $
-//
-// $Id: main.cpp 219 2015-05-18 17:32:21Z oparviai $
-//
-////////////////////////////////////////////////////////////////////////////////
-//
 // License :
 //
 //  SoundTouch audio processing library
@@ -65,8 +58,8 @@ using namespace std;
 
 static const char _helloText[] = 
     "\n"
-    "   SoundStretch v%s -  Written by Olli Parviainen 2001 - 2015\n"
-    "==================================================================\n"
+    "   SoundStretch v%s -  Copyright (c) Olli Parviainen\n"
+    "=========================================================\n"
     "author e-mail: <oparviai"
     "@"
     "iki.fi> - WWW: http://www.surina.net/soundtouch\n"

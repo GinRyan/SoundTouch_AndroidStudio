@@ -1,8 +1,4 @@
 ## Process this file with automake to create Makefile.in
-##
-## $Id: Makefile.am 209 2015-05-01 07:55:47Z oparviai $
-##
-## Copyright (C) 2003 - David W. Durham
 ## 
 ## This file is part of SoundTouch, an audio processing library for pitch/time adjustments
 ## 
@@ -30,7 +26,7 @@ bin_PROGRAMS=soundstretch
 
 noinst_HEADERS=RunParameters.h WavFile.h
 
-# extra files to include in distrubution tarball
+# extra files to include in distribution tarball
 EXTRA_DIST=soundstretch.dsp soundstretch.dsw soundstretch.sln soundstretch.vcproj
 
 ## for every name listed under bin_PROGRAMS, you have a <prog>_SOURCES. This lists

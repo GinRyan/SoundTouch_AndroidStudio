@@ -6,11 +6,6 @@
 /// Copyright (c) Olli Parviainen
 ///
 ////////////////////////////////////////////////////////////////////////////////
-//
-// $Id: SoundTouch.java 210 2015-05-14 20:03:56Z oparviai $
-//
-////////////////////////////////////////////////////////////////////////////////
-
 
 package net.surina;
 
@@ -125,7 +120,7 @@ public class ExampleActivity extends Activity implements OnClickListener
 	{
 		File file2play = new File(fileName);
 		Intent i = new Intent();
-		i.setAction(android.content.Intent.ACTION_VIEW);
+		i.setAction(Intent.ACTION_VIEW);
 		i.setDataAndType(Uri.fromFile(file2play), "audio/wav");
 		startActivity(i);		
 	}

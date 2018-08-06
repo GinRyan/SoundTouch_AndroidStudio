@@ -8,13 +8,6 @@
 ///
 ////////////////////////////////////////////////////////////////////////////////
 //
-// Last changed  : $Date: 2014-04-06 18:57:21 +0300 (Sun, 06 Apr 2014) $
-// File revision : $Revision: 4 $
-//
-// $Id: RunParameters.cpp 195 2014-04-06 15:57:21Z oparviai $
-//
-////////////////////////////////////////////////////////////////////////////////
-//
 // License :
 //
 //  SoundTouch audio processing library
@@ -267,7 +260,7 @@ void RunParameters::parseSwitchParam(const string &str)
             {
                 goalBPM = parseSwitchValue(str);
             } 
-            catch (const runtime_error)
+            catch (const runtime_error &)
             {
                 // illegal or missing bpm value => just calculate bpm
                 goalBPM = 0;
